@@ -1,0 +1,22 @@
+{
+  "name": "svg-resizer",
+  "version": "0.0.1",
+  "description": "node.js ClI utility to resize SVGs",
+  "main": "svg-resizer.js",
+  "scripts": {
+    "test": ""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/vieron/svg-resizer.git"
+  },
+  "author": "vieron",
+  "license": "MIT",
+  "dependencies": {
+    "fs-extra": "~0.8.1",
+    "nomnom": "~1.6.2",
+    "shelljs": "~0.2.6",
+    "lodash": "~2.4.1",
+    "xml2js": "~0.4.2"
+  }
+}

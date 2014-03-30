@@ -95,7 +95,7 @@ svgFiles.forEach(function(svgPath) {
 
     var convert = exec('rsvg-convert ' + args.join(' '));
     if (convert.code !== 0) {
-        echo('Error converting file: svgPath');
+        echo('Error converting file: ' + svgPath);
     }
 });
 

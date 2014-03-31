@@ -49,10 +49,6 @@ var finalWidth = opts.width || opts.height;
 var finalHeight = opts.height || opts.width;
 var finalRatio = finalWidth / finalHeight;
 
-var pxToPt = function(px) {
-    return px * 0.75;
-};
-
 svgFiles.forEach(function(svgPath) {
 
     if (opts.fit) {
@@ -69,10 +65,10 @@ svgFiles.forEach(function(svgPath) {
 
         if (origRatio < finalRatio) {
             newHeight = finalHeight;
-            newWidth = origWidth / (origHeight / newHeight);
+            newWidth = Math.floor(origWidth / (origHeight / newHeight));
         } else {
             newWidth = finalWidth;
-            newHeight = origHeight / (origWidth / newWidth);
+            newHeight = Math.floor(origHeight / (origWidth / newWidth));
         }
 
         opts.width = newWidth;
@@ -83,9 +79,11 @@ svgFiles.forEach(function(svgPath) {
     var outputPath =  opts.output ? path.join(opts.output, path.basename(svgPath, '.svg') + '.' + opts.format) : '';
 
     var args = _.compact([
-        opts.width ? '-w ' + pxToPt(opts.width) : null,
-        opts.height ? '-h ' + pxToPt(opts.height) : null,
+        opts.width ? '-w ' + opts.width : null,
+        opts.height ? '-h ' + opts.height : null,
         '--keep-aspect-ratio',
+        '--dpi-x 72', // work with pixels
+        '--dpi-y 72', // work with pixels
         '-f ' + opts.format,
         svgPath,
         opts.output ? '-o ' + outputPath : null

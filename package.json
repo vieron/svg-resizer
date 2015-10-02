@@ -6,6 +6,9 @@
   "scripts": {
     "test": ""
   },
+  "bin" : {
+    "svg-resizer" : "./svg-resizer.js"
+  },
   "repository": {
     "type": "git",
     "url": "git://github.com/vieron/svg-resizer.git"
